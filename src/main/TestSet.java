@@ -1,12 +1,12 @@
-package algorithms.insertionsort;
+package main;
 
 import static org.junit.Assert.*;
-
+import gui.GUIControls;
 import java.util.ArrayList;
-
 import org.junit.Test;
+import algorithms.insertionsort.Insertionsort;
 
-public class InsertionsortTest {
+public class TestSet {
 
 	@Test
 	public void testSortList() {
@@ -33,5 +33,13 @@ public class InsertionsortTest {
 		Insertionsort testAlgorithm = new Insertionsort();
 		
 		assertEquals("List should be sorted", sorted, testAlgorithm.sortList(unsorted));
+	}
+	
+	@Test
+	public void GUITest(){
+		
+		GUIControls testGUI = new GUIControls();
+		testGUI.runGUI();
+		
 	}
 }

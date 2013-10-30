@@ -1,13 +1,14 @@
 package main;
 
+import gui.GUIControls;
+
 public class Main {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		GUIControls gui = new GUIControls();
+		gui.runGUI();
 	}
-
 }
