@@ -10,6 +10,8 @@ import java.awt.event.MouseEvent;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class GUIControls extends JFrame implements IGUIControls {
 	private JTextField textField;
@@ -26,10 +28,17 @@ public class GUIControls extends JFrame implements IGUIControls {
 		panel.setSize(600, 400);
 		
 		JButton InsertionSortButton = new JButton("Insertion Sort");
-		InsertionSortButton.setBounds(20, 30, 101, 28);
+		InsertionSortButton.setBounds(20, 30, 129, 28);
 		panel.add(InsertionSortButton);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				CardLayout cardLayout = (CardLayout) getContentPane().getLayout();
+                cardLayout.show(getContentPane(), "name_36737116256884");
+			}
+		});
 		getContentPane().add(panel_1, "name_36737137352442");
 		panel_1.setLayout(null);
 		

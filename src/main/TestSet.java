@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import gui.GUIControls;
 import java.util.ArrayList;
 import org.junit.Test;
+
 import algorithms.insertionsort.Insertionsort;
 
 public class TestSet {
