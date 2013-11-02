@@ -9,58 +9,88 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.border.LineBorder;
 
 public class GUIControls extends JFrame implements IGUIControls {
 	private JTextField textField;
+	
+	private int posX=0,posY=0;
 
 	public GUIControls() {
+		getContentPane().setBackground(Color.WHITE);
 		
 		getContentPane().setLayout(new CardLayout(0, 0));
-	
-		JPanel panel = new JPanel();
-		getContentPane().add(panel, "name_36737116256884");
 		
 		setTitle("Sorting Algorithm Visualiser");
-		panel.setLayout(null);
-		panel.setSize(600, 400);
 		
-		JButton InsertionSortButton = new JButton("Insertion Sort");
-		InsertionSortButton.setBounds(20, 30, 129, 28);
-		panel.add(InsertionSortButton);
+		getContentPane().setPreferredSize(new Dimension(600, 400));
+		JPanel rootPanel = new JPanel();
+		rootPanel.setBorder(new LineBorder(new Color(0, 0, 255), 1, true));
+		rootPanel.setBackground(Color.WHITE);
+		getContentPane().add(rootPanel, "name_25253210045969");
+		rootPanel.setLayout(new BoxLayout(rootPanel, BoxLayout.X_AXIS));
+		rootPanel.setPreferredSize(new Dimension(600, 400));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.addKeyListener(new KeyAdapter() {
+		JPanel menuLeft = new JPanel();
+		rootPanel.add(menuLeft);
+		menuLeft.setBackground(Color.WHITE);
+		menuLeft.setLayout(null);
+		int menuWidth = (600/3);
+		menuLeft.setPreferredSize(new Dimension(menuWidth, rootPanel.getHeight()));
+		
+		JButton button = new JButton("Insertion Sort");
+		button.setBorderPainted(false);
+		button.setBorder(null);
+		button.setBackground(Color.WHITE);
+		button.setBounds(0, 36, 149, 40);
+		menuLeft.add(button);
+		
+		JPanel contentRight = new JPanel();
+		rootPanel.add(contentRight);
+		contentRight.setBackground(Color.WHITE);
+		int contentWidth = 2*(600/3);
+		contentRight.setPreferredSize(new Dimension(contentWidth, rootPanel.getHeight()));
+		contentRight.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				CardLayout cardLayout = (CardLayout) getContentPane().getLayout();
                 cardLayout.show(getContentPane(), "name_36737116256884");
 			}
 		});
-		getContentPane().add(panel_1, "name_36737137352442");
-		panel_1.setLayout(null);
-		
-		Color backgroundColor = panel.getBackground();
+		contentRight.setLayout(null);
 		
 		textField = new JTextField();
 		textField.setBounds(37, 66, 217, 28);
-		panel_1.add(textField);
+		contentRight.add(textField);
 		textField.setColumns(10);
 		
 		JTextPane txtpnTypeNumbersSeperated = new JTextPane();
 		txtpnTypeNumbersSeperated.setText("Type numbers seperated by commas");
 		txtpnTypeNumbersSeperated.setBounds(37, 30, 217, 24);
-		panel_1.add(txtpnTypeNumbersSeperated);
-		txtpnTypeNumbersSeperated.setBackground(backgroundColor);
+		contentRight.add(txtpnTypeNumbersSeperated);
 		
-		InsertionSortButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				CardLayout cardLayout = (CardLayout) getContentPane().getLayout();
-                cardLayout.show(getContentPane(), "name_36737137352442");
-			}
+		setUndecorated(true);
+		addMouseListener(new MouseAdapter()
+		{
+		   public void mousePressed(MouseEvent e)
+		   {
+		      posX=e.getX();
+		      posY=e.getY();
+		   }
+		});
+		
+		addMouseMotionListener(new MouseAdapter()
+		{
+		     public void mouseDragged(MouseEvent evt)
+		     {
+				//sets frame position when mouse dragged			
+				setLocation (evt.getXOnScreen()-posX,evt.getYOnScreen()-posY);
+							
+		     }
 		});
 
 	}

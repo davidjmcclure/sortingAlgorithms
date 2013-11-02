@@ -46,7 +46,6 @@ public class Mergesort implements IAlgorithm{
 			}
 		}
 
-
 		if(ACheck == partialA.size() & BCheck < partialB.size()){
 			for(; BCheck < partialB.size(); BCheck++){
 				output.add(partialB.get(BCheck));
