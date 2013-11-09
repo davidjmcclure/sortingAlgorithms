@@ -9,15 +9,11 @@ public class Heapsort implements IAlgorithm {
 
 	@Override
 	public ArrayList<Integer> sortList(ArrayList<Integer> unsortedList) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	private ArrayList<Integer> heapify(ArrayList<Integer> A){
-		
-		
-		return A;
-		
+	private ArrayList<Integer> heapify(ArrayList<Integer> A){	
+		return A;		
 	}
 
 	private ArrayList<Integer> siftDown(ArrayList<Integer> A, int start, int end){
